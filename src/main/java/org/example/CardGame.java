@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class CardGame {
@@ -14,6 +15,14 @@ public class CardGame {
 
     public CardGame(ArrayList<Card> deck) {
         this.deck = deck;
+    }
+
+    @Override
+    public String toString() {
+        return "CardGame{" +
+                "deck=" + deck +
+                ", cardGame='" + cardGame + '\'' +
+                '}';
     }
 
     public ArrayList<Card> getDeck() {
@@ -34,4 +43,17 @@ public class CardGame {
             }
         }
     }
+
+    public Card dealCard() {
+        if (deck.size()>0) {
+            return deck.remove(0);
+        } else {
+            return null;
+        }
+    }
+
+//    public ArrayList<Card> sortDeckInNumberOrder() {
+//        deck.sort(Comparator.comparing(intList));
+//        return deck;
+//    }
 }
