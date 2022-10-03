@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardGame {
-    Card card;
-    String cardGame = "Welcome to Snap!";
+    private ArrayList<Card> deck;
+    private String cardGame = "Snap!";
 
     public CardGame(String cardGame) {
         this.cardGame = cardGame;
+        deckOfCards();
     }
-    ArrayList<Card> deck = new ArrayList<>(52);
 
     public CardGame(ArrayList<Card> deck) {
         this.deck = deck;
@@ -24,7 +24,14 @@ public class CardGame {
         this.deck = deck;
     }
 
-//    public getDeck() {
-//
-//    }
+    public void deckOfCards() {
+        List<String> suits = Card.getSuits();
+        List<String> symbols = Card.getSymbol();
+        deck = new ArrayList<>();
+        for (String suit: suits) {
+            for (String symbol : symbols) {
+                deck.add(new Card(symbol,suit));
+            }
+        }
+    }
 }

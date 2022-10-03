@@ -26,13 +26,12 @@ public class Card {
         return VALUE;
     }
 
-    public List<String> getSymbol() {
+    public static List<String> getSymbol() {
         return Arrays.asList("2","3","4","5","6","7","8","9","10","J","Q","K","A");
     }
 
     public void setSYMBOL(String SYMBOL) {
         List<String> validSymbols = getSymbol();
-        SYMBOL = SYMBOL.toLowerCase(Locale.ROOT);
          if (validSymbols.contains(SYMBOL)){
              this.SYMBOL = SYMBOL;
          }
