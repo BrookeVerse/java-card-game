@@ -52,8 +52,8 @@ public class CardGame {
         }
     }
 
-//    public ArrayList<Card> sortDeckInNumberOrder() {
-//        deck.sort(Comparator.comparing(intList));
-//        return deck;
-//    }
+    public ArrayList<Card> sortDeckInNumberOrder() {
+        deck.sort(Comparator.comparing(intList));
+        return deck;
+    }
 }

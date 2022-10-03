@@ -38,7 +38,7 @@ public class Card {
     }
 
     public static List<String> getSuits() {
-        return Arrays.asList(" ♤ ", " ♦ ", " ♣ ", " ♥ ");
+        return Arrays.asList("♤", "♦", "♣", "♥");
     }
     public void setSUIT(String SUIT) {
         List<String> validSuit = getSuits();
