@@ -1,12 +1,22 @@
 package org.example;
-import java.util.Random;
+import java.util.*;
 
 public class Card {
     //Each card has a VALUE, an associated SYMBOL, and the deck has a string SUIT.
-    int[] VALUE = {2,3,4,5,6,7,8,9,10,11,12,13,14};
-    String[] SYMBOL = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
-    String[] SUIT = {" ♤ ", " ♦ ", " ♣ ", " ♥ "};
+    private int[] VALUE = {2,3,4,5,6,7,8,9,10,11,12,13,14};
+    private String SYMBOL;
+    private String SUIT;
 
+    @Override
+    public String toString() {
+        return String.format("%s of %s", SYMBOL, SUIT);
+    }
+
+    public Card(String SYMBOL, String SUIT) {
+        setSYMBOL(SYMBOL);
+        setSUIT(SUIT);
+        String card = SYMBOL + " of " + SUIT;
+    }
 
     String unicodeChar;
     
@@ -16,24 +26,32 @@ public class Card {
         return VALUE;
     }
 
-    public String[] getSYMBOL() {
-        return SYMBOL;
+    public List<String> getSymbol() {
+        return Arrays.asList("2","3","4","5","6","7","8","9","10","J","Q","K","A");
     }
 
-    public String[] getSUIT() {
-        return SUIT;
+    public void setSYMBOL(String SYMBOL) {
+        List<String> validSymbols = getSymbol();
+        SYMBOL = SYMBOL.toLowerCase(Locale.ROOT);
+         if (validSymbols.contains(SYMBOL)){
+             this.SYMBOL = SYMBOL;
+         }
     }
 
-    @Override
-    public String toString() {
-        return "Card: " +
-                "VALUE=" + (RANDOM.nextInt(VALUE.length)) +
-                ", SYMBOL=" + (RANDOM.nextInt(SYMBOL.length)) +
-                ", SUIT=" + unicodeString();
+    public static List<String> getSuits() {
+        return Arrays.asList(" ♤ ", " ♦ ", " ♣ ", " ♥ ");
+    }
+    public void setSUIT(String SUIT) {
+        List<String> validSuit = getSuits();
+        if (validSuit.contains(SUIT)) {
+            this.SUIT = SUIT;
+        }
     }
 
-    public String unicodeString() {
-        int random = (RANDOM.nextInt(SUIT.length));
-        return unicodeChar = (SUIT[random]);
-    }
+
+
+//    public String unicodeString() {
+//        int random = (RANDOM.nextInt(SUIT.length));
+//        return unicodeChar = (SUIT[random]);
+//    }
 }

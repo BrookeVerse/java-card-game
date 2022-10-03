@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardGame {
     Card card;
@@ -10,10 +11,20 @@ public class CardGame {
         this.cardGame = cardGame;
     }
     ArrayList<Card> deck = new ArrayList<>(52);
-    Card cards = new Card();
-//    public String getCard() {
-//       Card card = new Card();
-//       return card.toString();
-//    }
 
+    public CardGame(ArrayList<Card> deck) {
+        this.deck = deck;
+    }
+
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
+    public void setDeck(ArrayList<Card> deck) {
+        this.deck = deck;
+    }
+
+//    public getDeck() {
+//
+//    }
 }
