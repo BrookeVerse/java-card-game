@@ -6,40 +6,25 @@ import java.util.List;
 
 public class CardGame {
     private ArrayList<Card> deck;
-    private String cardGame = "Snap!";
 
-    public CardGame(String cardGame) {
-        this.cardGame = cardGame;
+    public CardGame() {
         deckOfCards();
-    }
-
-    public CardGame(ArrayList<Card> deck) {
-        this.deck = deck;
     }
 
     @Override
     public String toString() {
         return "CardGame{" +
                 "deck=" + deck +
-                ", cardGame='" + cardGame + '\'' +
                 '}';
     }
 
-    public ArrayList<Card> getDeck() {
-        return deck;
-    }
-
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
-    }
-
     public void deckOfCards() {
-        List<String> suits = Card.getSuits();
-        List<String> symbols = Card.getSymbol();
+        List<Suits> suits = List.of(Suits.values());
+        List<Ranks> ranks = List.of(Ranks.values());
         deck = new ArrayList<>();
-        for (String suit: suits) {
-            for (String symbol : symbols) {
-                deck.add(new Card(symbol,suit));
+        for (Suits suit: suits){
+            for (Ranks rank: ranks){
+                deck.add(new Card(rank, suit));
             }
         }
     }
@@ -52,8 +37,8 @@ public class CardGame {
         }
     }
 
-    public ArrayList<Card> sortDeckInNumberOrder() {
-        deck.sort(Comparator.comparing(intList));
+    public ArrayList<Card> sortByNumber() {
+        deck.sort(Comparator.comparingInt(Card::getRank));
         return deck;
     }
 }

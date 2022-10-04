@@ -1,11 +1,13 @@
 package org.example;
 
-import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args) {
-        CardGame snap = new CardGame("SNAP");
-        System.out.println(snap.dealCard());
-        System.out.println(snap.dealCard());
+        Card card = new Card(Ranks.QUEEN, Suits.CLUBS);
+        System.out.println(card);
+        CardGame snap = new CardGame();
+        System.out.println(snap.toString());
+        System.out.println(snap.sortByNumber());
     }
 }
