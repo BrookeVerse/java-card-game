@@ -1,7 +1,7 @@
-package org.example;
+package org.example.cards;
 
 public enum Suits {
-    HEARTS("♥"), SPADES("♤"), DIAMONDS("♤"), CLUBS("♣");
+    HEARTS("♥"), SPADES("♤"), DIAMONDS("♦"), CLUBS("♣");
 
     private final String suitUnicode;
 

@@ -1,23 +1,21 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import org.example.cards.Card;
+import org.example.cards.Ranks;
+import org.example.cards.Suits;
+
+import java.util.*;
 
 public class CardGame {
     private ArrayList<Card> deck;
+    private String title;
 
     public CardGame() {
         deckOfCards();
+        this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "CardGame{" +
-                "deck=" + deck +
-                '}';
-    }
-
+    Random RANDOM = new Random();
     public void deckOfCards() {
         List<Suits> suits = List.of(Suits.values());
         List<Ranks> ranks = List.of(Ranks.values());
@@ -36,9 +34,20 @@ public class CardGame {
             return null;
         }
     }
+    public void shuffleDeck(){
+        Collections.shuffle(deck);
+    }
+
 
     public ArrayList<Card> sortByNumber() {
         deck.sort(Comparator.comparingInt(Card::getRank));
         return deck;
     }
+
+    public ArrayList<Card> sortBySuit() {
+        deck.sort(Comparator.comparing(Card::getSuit));
+        return deck;
+    }
+
+
 }

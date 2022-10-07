@@ -1,5 +1,4 @@
-package org.example;
-import java.util.*;
+package org.example.cards;
 
 public class Card {
    private Suits suit;
@@ -18,13 +17,7 @@ public class Card {
         return rank.getRank();
     }
 
-    public void setSuit(Suits suit) {
-        this.suit = suit;
-    }
 
-    public void setRank(Ranks rank) {
-        this.rank = rank;
-    }
 
     @Override
     public String toString() {
