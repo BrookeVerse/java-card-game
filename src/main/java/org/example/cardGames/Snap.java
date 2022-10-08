@@ -15,9 +15,11 @@ public class Snap extends CardGame {
     private String playerTwoName;
     private Player activePlayer;
     private String gameOver = "";
-    private String snap;
+
 
     Scanner scanner = new Scanner(System.in);
+
+//    String snap = scanner.nextLine();
     Timer timer = new Timer("Timer");
     Player playerOne = new Player(playerOneName);
     Player playerTwo = new Player(playerTwoName);
@@ -46,9 +48,9 @@ public class Snap extends CardGame {
     public void entTurn() {
         System.out.println("Press enter, when you are ready to take your turn");
         scanner.nextLine();
+
     }
     public void endGame() {
-        if (snap.equalsIgnoreCase("snap")) {
             if (activePlayer == playerOne) {
                 System.out.println(playerOneName + gameOver);
                 System.exit(0);
@@ -56,6 +58,12 @@ public class Snap extends CardGame {
                 System.out.println(playerTwoName + gameOver);
                 System.exit(0);
             }
+    }
+    public void timerEnd() {
+        if (activePlayer == playerOne){
+            System.out.println(playerOneName + " you lose!");
+        } else {
+            System.out.println(playerTwoName + " you lose!");
         }
     }
     public void snapGame() {
@@ -68,7 +76,6 @@ public class Snap extends CardGame {
             } else if (activePlayer == playerTwo){
                 activePlayer = playerOne;
             }
-
             if (activePlayer == playerOne) {
                 System.out.println(playerOneName + " your Card is...");
                 System.out.println(firstCard);
@@ -77,37 +84,21 @@ public class Snap extends CardGame {
                 System.out.println(playerTwoName + " your Card is...");
                 System.out.println(firstCard);
             }
-            snap = scanner.nextLine();
             if (firstCard.getRank() == secondCard.getRank()){
                 gameOver = " Wins!";
                 break;
             }
         } while (Objects.equals(gameOver, "") || Objects.equals(gameOver, " Wins!"));
-        timer.schedule( new TimerTask() {
+
+        TimerTask snap = new TimerTask() {
             @Override
             public void run() {
-                if (snap.equalsIgnoreCase("snap")) {
-                    endGame();
-                } else {
-                    timerEnd();
-                }
-                System.exit(0);
+                timerEnd();
             }
-        }, 2*1000, 1);
-
-
-
-
-
-
-
-
-    }
-    public void timerEnd() {
-        if (activePlayer == playerOne){
-            System.out.println(playerOneName + " you lose!");
-        } else {
-            System.out.println(playerTwoName + " you lose!");
+        };
+        timer.schedule(snap, 2*1000);
+        if(scanner.nextLine().equalsIgnoreCase("snap")){
+            endGame();
         }
     }
 }
