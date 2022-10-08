@@ -2,9 +2,10 @@ package org.example;
 
 
 import org.example.cardGames.Snap;
+import org.example.gameCreation.CardGame;
 
-public class Main {
+public class CardTable {
     public static void main(String[] args) {
-        Snap snap = new Snap();
+        CardGame snap = new Snap();
 }
 }

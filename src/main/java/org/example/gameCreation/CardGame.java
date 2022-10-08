@@ -1,6 +1,6 @@
 package org.example.gameCreation;
 
-import org.example.Main;
+import org.example.CardTable;
 import org.example.cardGames.Snap;
 import org.example.cards.Card;
 import org.example.cards.Ranks;
@@ -18,6 +18,11 @@ public class CardGame {
         this.title = title;
     }
 
+    @Override
+    public String toString() {
+        return title;
+    }
+
     public void getDeck() {
         try {
             List<Suits> suits = List.of(Suits.values());
@@ -29,7 +34,6 @@ public class CardGame {
                 }
             }
         } catch (NullPointerException e) {
-            System.exit(0);
             System.out.println("Cannot find cards!");
         }
 
@@ -39,7 +43,6 @@ public class CardGame {
         if (deck.size()>0) {
             return deck.remove(0);
         } else {
-            System.exit(0);
             throw new NullPointerException("The Deck is empty!");
         }
     }
@@ -47,7 +50,6 @@ public class CardGame {
         try {
             Collections.shuffle(deck);
         } catch (NullPointerException e){
-            System.exit(0);
             System.out.println("The deck is empty!");
         }
 

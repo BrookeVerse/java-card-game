@@ -8,31 +8,24 @@ import java.sql.Time;
 import java.util.*;
 
 public class Snap extends CardGame {
-    private String title;
     private Card firstCard;
     private Card secondCard = null;
     private String playerOneName;
     private String playerTwoName;
     private Player activePlayer;
     private String gameOver = "";
-
-
     Scanner scanner = new Scanner(System.in);
-
-//    String snap = scanner.nextLine();
-    Timer timer = new Timer("Timer");
+    Timer timer = new Timer();
     Player playerOne = new Player(playerOneName);
     Player playerTwo = new Player(playerTwoName);
     public Snap() {
-        super("Snap");
-        this.title = "Snap";
+        super("snap");
         welcomeMessage();
         firstCard = dealCard();
         snapGame();
     }
-
     public void welcomeMessage(){
-        System.out.println("Welcome to " + title + "\nThe Rules: Each player will be given a card, if the card matches the other players call snap within two seconds.\nReady to begin?");
+        System.out.println("Welcome to snap!\nThe Rules: Each player will be given a card, if the card matches the other players call snap within two seconds.\nReady to begin?");
         String answer = scanner.next();
         if (answer.equalsIgnoreCase("yes")) {
             shuffleDeck();
@@ -43,12 +36,12 @@ public class Snap extends CardGame {
             playerTwoName = scanner.next();
         } else {
             System.out.println("Thank you for playing!");
+            System.exit(0);
         }
     }
     public void entTurn() {
         System.out.println("Press enter, when you are ready to take your turn");
         scanner.nextLine();
-
     }
     public void endGame() {
             if (activePlayer == playerOne) {
@@ -89,7 +82,6 @@ public class Snap extends CardGame {
                 break;
             }
         } while (Objects.equals(gameOver, "") || Objects.equals(gameOver, " Wins!"));
-
         TimerTask snap = new TimerTask() {
             @Override
             public void run() {
