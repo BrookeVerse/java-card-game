@@ -3,10 +3,7 @@ package org.example.cardGames;
 import org.example.cards.Card;
 import org.example.gameCreation.CardGame;
 import org.example.gameCreation.Player;
-
-import java.sql.Time;
 import java.util.*;
-
 public class Snap extends CardGame {
     private Card firstCard;
     private Card secondCard = null;
@@ -25,6 +22,7 @@ public class Snap extends CardGame {
         snapGame();
     }
     public void welcomeMessage(){
+        snapTitle();
         System.out.println("Welcome to snap!\nThe Rules: Each player will be given a card, if the card matches the other players call snap within two seconds.\nReady to begin?");
         String answer = scanner.next();
         if (answer.equalsIgnoreCase("yes")) {
@@ -38,6 +36,17 @@ public class Snap extends CardGame {
             System.out.println("Thank you for playing!");
             System.exit(0);
         }
+    }
+    public void snapTitle() {
+        System.out.println("\n" +
+                " (`-').-><-. (`-')_ (`-')  _  _  (`-') \n" +
+                " ( OO)_     \\( OO) )(OO ).-/  \\-.(OO ) \n" +
+                "(_)--\\_) ,--./ ,--/ / ,---.   _.'    \\ \n" +
+                "/    _ / |   \\ |  | | \\ /`.\\ (_...--'' \n" +
+                "\\_..`--. |  . '|  |)'-'|_.' ||  |_.' | \n" +
+                ".-._)   \\|  |\\    |(|  .-.  ||  .___.' \n" +
+                "\\       /|  | \\   | |  | |  ||  |      \n" +
+                " `-----' `--'  `--' `--' `--'`--'      \n");
     }
     public void entTurn() {
         System.out.println("Press enter, when you are ready to take your turn");
@@ -55,8 +64,10 @@ public class Snap extends CardGame {
     public void timerEnd() {
         if (activePlayer == playerOne){
             System.out.println(playerOneName + " you lose!");
+            System.exit(0);
         } else {
             System.out.println(playerTwoName + " you lose!");
+            System.exit(0);
         }
     }
     public void snapGame() {
@@ -82,6 +93,7 @@ public class Snap extends CardGame {
                 break;
             }
         } while (Objects.equals(gameOver, "") || Objects.equals(gameOver, " Wins!"));
+
         TimerTask snap = new TimerTask() {
             @Override
             public void run() {

@@ -1,8 +1,5 @@
 package org.example.gameCreation;
 
-import org.example.cardGames.Snap;
-import org.example.cards.Card;
-
 public class Player {
     private String playerName;
 

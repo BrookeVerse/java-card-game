@@ -1,29 +1,21 @@
 package org.example.gameCreation;
-
-import org.example.CardTable;
-import org.example.cardGames.Snap;
 import org.example.cards.Card;
 import org.example.cards.Ranks;
 import org.example.cards.Suits;
-
 import java.util.*;
-
 public class CardGame {
     private ArrayList<Card> deck;
     private String title;
-
-
     public CardGame(String title) {
-        getDeck();
+        deckOfCards();
         this.title = title;
     }
-
     @Override
     public String toString() {
         return title;
     }
 
-    public void getDeck() {
+    public void deckOfCards() {
         try {
             List<Suits> suits = List.of(Suits.values());
             List<Ranks> ranks = List.of(Ranks.values());
@@ -36,7 +28,10 @@ public class CardGame {
         } catch (NullPointerException e) {
             System.out.println("Cannot find cards!");
         }
-
+    }
+    public void getDeck() {
+        deck.forEach(card -> System.out.print(card.toString()+ " "));
+        System.out.println();
     }
 
     public Card dealCard() {
@@ -54,8 +49,6 @@ public class CardGame {
         }
 
     }
-
-
     public ArrayList<Card> sortByNumber() {
         if (deck.size() > 0) {
             deck.sort(Comparator.comparingInt(Card::getRank));
@@ -65,7 +58,6 @@ public class CardGame {
         }
 
     }
-
     public ArrayList<Card> sortBySuit() {
         if(deck.size() > 0) {
             deck.sort(Comparator.comparing(Card::getSuit));

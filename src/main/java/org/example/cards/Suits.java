@@ -5,7 +5,7 @@ public enum Suits {
 
     private final String suitUnicode;
 
-    private Suits(String suitUnicode){
+    Suits(String suitUnicode){
         this.suitUnicode = suitUnicode;
     }
 
