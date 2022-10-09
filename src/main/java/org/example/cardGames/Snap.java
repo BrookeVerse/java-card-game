@@ -11,6 +11,8 @@ public class Snap extends CardGame {
     private String playerTwoName;
     private Player activePlayer;
     private String gameOver = "";
+
+    private boolean playAgain = true;
     Scanner scanner = new Scanner(System.in);
     Timer timer = new Timer();
     Player playerOne = new Player(playerOneName);
@@ -19,19 +21,22 @@ public class Snap extends CardGame {
         super("snap");
         welcomeMessage();
         firstCard = dealCard();
-        snapGame();
+        while (playAgain) {
+            snapGame();
+        }
+
     }
     public void welcomeMessage(){
         snapTitle();
-        System.out.println("Welcome to snap!\nThe Rules: Each player will be given a card, if the card matches the other players call snap within two seconds.\nReady to begin?");
+        System.out.println("Welcome to snap!\nThe Rules: Each player will be given a card, if the card matches the other players type snap within two seconds.\nReady to begin?");
         String answer = scanner.next();
-        if (answer.equalsIgnoreCase("yes")) {
+        if (answer.trim().equalsIgnoreCase("yes")) {
             shuffleDeck();
             activePlayer = playerTwo;
             System.out.println("Player Ones' name?");
-            playerOneName = scanner.next();
+            playerOneName = scanner.next().trim();
             System.out.println("Player Twos' name?");
-            playerTwoName = scanner.next();
+            playerTwoName = scanner.next().trim();
         } else {
             System.out.println("Thank you for playing!");
             System.exit(0);
