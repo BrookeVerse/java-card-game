@@ -47,4 +47,4 @@ Functionality I will add to this project:
 @BrookeVerse - Developed By
 
 ## 🎉 Acknowledgements
-The _nology coaches who trained us in using react, so that we could use that knowledge to create an app from scratch.
+The _nology coaches who trained us in using Java, so that we could use that knowledge to create an app from scratch.
