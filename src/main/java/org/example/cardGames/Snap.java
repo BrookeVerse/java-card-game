@@ -6,13 +6,12 @@ import org.example.gameCreation.Player;
 import java.util.*;
 public class Snap extends CardGame {
     private Card firstCard;
-    private Card secondCard = null;
+    private Card secondCard;
     private String playerOneName;
     private String playerTwoName;
     private Player activePlayer;
     private String gameOver = "";
 
-    private boolean playAgain = true;
     Scanner scanner = new Scanner(System.in);
     Timer timer = new Timer();
     Player playerOne = new Player(playerOneName);
@@ -21,10 +20,7 @@ public class Snap extends CardGame {
         super("snap");
         welcomeMessage();
         firstCard = dealCard();
-        while (playAgain) {
             snapGame();
-        }
-
     }
     public void welcomeMessage(){
         snapTitle();
