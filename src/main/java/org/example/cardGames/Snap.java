@@ -20,7 +20,7 @@ public class Snap extends CardGame {
         super("snap");
         welcomeMessage();
         firstCard = dealCard();
-            snapGame();
+        snapGame();
     }
     public void welcomeMessage(){
         snapTitle();
